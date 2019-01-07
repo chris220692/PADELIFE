@@ -1,5 +1,3 @@
-<h1>Players#new</h1>
-
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
@@ -7,17 +5,19 @@
 
       <%= simple_form_for [current_user, @player] do |f| %>
         <%= f.input :first_name %>
-
-
-
-
-
+        <%= f.input :last_name %>
+        <%= f.input :age %>
+        <%= f.input :gender, collection: ["Male", "Female"] %>
+        <%= f.input :city %>
+        <%= f.input :zip %>
+        <%= f.input :description %>
+        <%= f.input :level, collection: ["Beginner", "Elementary ", "Intermediate", "Advanced", "Expert"] %>
+        <%= f.input :photo%>
 
         <div class="form-actions text-center">
           <%= f.button :submit, "Confirm", class: "btn btn-primary" %>
         </div>
       <% end %>
-
 
     </div>
   </div>
