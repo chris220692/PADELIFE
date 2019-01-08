@@ -13,6 +13,7 @@
         <%= f.input :description %>
         <%= f.input :level, collection: ["Beginner", "Elementary ", "Intermediate", "Advanced", "Expert"] %>
         <%= f.input :photo%>
+        <%= f.input :photo_cache, as: :hidden %>
 
         <div class="form-actions text-center">
           <%= f.button :submit, "Confirm", class: "btn btn-primary" %>
