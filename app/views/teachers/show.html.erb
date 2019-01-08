@@ -1,2 +1,25 @@
-<h1>Teachers#show</h1>
-<p>Find me in app/views/teachers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h2> Your profile </h2>
+
+      <% if @teacher.photo.present? %>
+        <%= cl_image_tag @teacher.photo, height: 300, width: 400, crop: :fill, gravity: :face %>
+      <% end %>
+
+      <ul>
+        <li><%= @teacher.first_name %></li>
+        <li><%= @teacher.last_name %></li>
+        <li><%= @teacher.gender%></li>
+        <li><%= @teacher.age %></li>
+        <li><%= @teacher.description %></li>
+        <li><%= @teacher.city %></li>
+        <li><%= @teacher.zip %></li>
+      </ul>
+
+
+      <%= link_to 'Edit your profile', edit_user_teacher_path(current_user, @teacher), class: "btn btn-primary" %>
+      <%= link_to 'Destroy your profile', user_teacher_path(current_user, @teacher), method: :delete, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>

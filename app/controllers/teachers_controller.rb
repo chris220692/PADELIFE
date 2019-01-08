@@ -13,7 +13,7 @@ class TeachersController < ApplicationController
 
   def create
     @teacher = Teacher.new(teacher_params)
-    @teacher = current_user.teacher
+    @teacher.user = current_user
     if @teacher.save
       redirect_to user_teacher_path(current_user, @teacher), notice: 'Teacher profile was successfully created!'
     else
@@ -22,7 +22,7 @@ class TeachersController < ApplicationController
   end
 
   def edit
-    @teacher = Player.find(params[:id])
+    @teacher = Teacher.find(params[:id])
   end
 
   def update
