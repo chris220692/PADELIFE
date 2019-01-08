@@ -1,2 +1,6 @@
 <h1>Players#show</h1>
 <p>Find me in app/views/players/show.html.erb</p>
+
+<% if @player.photo.present? %>
+  <%= cl_image_tag @player.photo, height: 300, width: 400, crop: :fill, gravity: :face %>
+<% end %>
