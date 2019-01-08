@@ -45,6 +45,21 @@ ActiveRecord::Schema.define(version: 2019_01_08_140352) do
     t.index ["user_id"], name: "index_players_on_user_id"
   end
 
+  create_table "teachers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.text "description"
+    t.integer "age"
+    t.string "photo"
+    t.string "city"
+    t.integer "zip"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "gender"
+    t.index ["user_id"], name: "index_teachers_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -55,11 +70,11 @@ ActiveRecord::Schema.define(version: 2019_01_08_140352) do
     t.datetime "updated_at", null: false
     t.string "category"
     t.string "name"
-    t.string "first_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "clubs", "users"
   add_foreign_key "players", "users"
+  add_foreign_key "teachers", "users"
 end
