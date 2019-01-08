@@ -6,4 +6,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :category, presence: true, inclusion: { in: ["Player", "Club", "Teacher"] }
+  validates :name, presence: true
+  validates :first_name, presence: true
 end
