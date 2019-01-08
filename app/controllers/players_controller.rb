@@ -27,7 +27,7 @@ class PlayersController < ApplicationController
   end
 
   def update
-    @player = current_user.player
+    @player = Player.find(params[:id])
     if @player.update(player_params)
       redirect_to user_player_path(current_user, @player)
     else
@@ -36,6 +36,9 @@ class PlayersController < ApplicationController
   end
 
   def destroy
+    @player = Player.find(params[:id])
+    @player.destroy
+    redirect_to root_path
   end
 
   private
