@@ -13,9 +13,9 @@ class ClubsController < ApplicationController
 
   def create
     @club = Club.new(club_params)
-    @club = current_user.club
+    @club.user = current_user
     if @club.save
-      redirect_to club_show_path(@club), notice: 'User profile was successfully created!'
+      redirect_to user_club_path(current_user, @club), notice: 'Club was successfully created!'
     else
       render :new
     end
@@ -28,7 +28,7 @@ class ClubsController < ApplicationController
   def update
     @club = Club.find(params[:id])
     if @club.update(club_params)
-      redirect_to club_show_path(@club)
+      redirect_to user_club_path(current_user, @club)
     else
       render :edit
     end
@@ -40,10 +40,8 @@ class ClubsController < ApplicationController
     redirect_to root_path
   end
 
-  def player_params
+  def club_params
     params.require(:club).permit(:user_id, :name, :street, :street_number, :city, :zip, :description, :photo)
   end
-
 end
-
 
