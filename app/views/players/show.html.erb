@@ -5,5 +5,14 @@
   <%= cl_image_tag @player.photo, height: 300, width: 400, crop: :fill, gravity: :face %>
 <% end %>
 
-<%= link_to 'Edit your profile', edit_user_player_path(current_user, current_user.player), class: "btn btn-primary" %>
-<%= link_to 'Destroy your profile', user_player_path(current_user, current_user.player), method: :delete, class: "btn btn-danger" %>
+<%= @player.first_name %>
+<%= @player.last_name %>
+<%= @player.gender%>
+<%= @player.description %>
+<%= @player.age %>
+<%= @player.city %>
+<%= @player.zip %>
+
+
+<%= link_to 'Edit your profile', edit_user_player_path(current_user, @player), class: "btn btn-primary" %>
+<%= link_to 'Destroy your profile', user_player_path(current_user, @player), method: :delete, class: "btn btn-danger" %>

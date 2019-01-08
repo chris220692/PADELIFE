@@ -1,8 +1,10 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
+<% if false %>
 <% if user_signed_in? %>
   <%= link_to 'Create your profile', new_user_player_path(current_user), class: "btn btn-primary" %>
   <%= link_to 'Show your profile', user_player_path(current_user, current_user.player), class: "btn btn-primary" %>
   <%= link_to 'Edit your profile', edit_user_player_path(current_user, current_user.player), class: "btn btn-primary" %>
   <% end %>
+<% end %>
