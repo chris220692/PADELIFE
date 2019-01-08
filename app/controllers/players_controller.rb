@@ -27,6 +27,12 @@ class PlayersController < ApplicationController
   end
 
   def update
+    @player = current_user.player
+    if @player.update(player_params)
+      redirect_to user_player_path(current_user, @player)
+    else
+      render :edit
+    end
   end
 
   def destroy
