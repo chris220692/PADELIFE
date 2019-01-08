@@ -1,10 +1,7 @@
-<h1>Players#edit</h1>
-<p>Find me in app/views/players/edit.html.erb</p>
-
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <h2 class="text-center"> Please complete your profile </h2>
+      <h2 class="text-center"> Edit your profile </h2>
 
       <%= simple_form_for [current_user, @player] do |f| %>
         <%= f.input :first_name %>
