@@ -5,6 +5,7 @@ class TeachersController < ApplicationController
 
   def show
     @teacher = Teacher.find(params[:id])
+    @teacher_review = TeacherReview.find(params[:id])
   end
 
   def new
