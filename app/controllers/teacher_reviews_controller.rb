@@ -27,11 +27,14 @@ class TeacherReviewsController < ApplicationController
   end
 
   def edit
+    @user = current_user
+    @teacher = Teacher.find(params[:teacher_id])
     @teacher_review = TeacherReview.find(params[:id])
   end
 
   def update
     @teacher_review = TeacherReview.find(params[:id])
+    @teacher = Teacher.find(params[:teacher_id])
     if @teacher_review.update(teacher_reviews_params)
       redirect_to user_teacher_path(current_user, @teacher)
     else
