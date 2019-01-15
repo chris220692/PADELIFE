@@ -1,0 +1,10 @@
+<h1>TeacherReviews#new</h1>
+<p>Find me in app/views/teacher_reviews/new.html.erb</p>
+
+
+<%= simple_form_for [current_user, @teacher, @teacher_review] do |f|  %>
+  <%= f.error_notification %>
+  <%= f.input :rating %>
+  <%= f.input :comment %>
+  <%= f.submit "Create Review", class: "btn btn-success"%>
+<% end %>
