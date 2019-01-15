@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_one :teacher
   has_one :club
   has_one :player
+  has_many :player_reviews
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
