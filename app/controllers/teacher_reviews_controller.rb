@@ -44,8 +44,10 @@ class TeacherReviewsController < ApplicationController
 
   def destroy
     @teacher_review = TeacherReview.find(params[:id])
-    @teacher_review.destroy
-    redirect_to user_teacher_path(current_user, @teacher)
+    @teacher = Teacher.find(params[:teacher_id])
+    if @teacher_review.destroy
+      redirect_to user_teacher_path(current_user, @teacher)
+    end
   end
 
   def teacher_reviews_params
