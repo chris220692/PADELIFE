@@ -1,0 +1,22 @@
+<h1>Fields#new</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h2 class="text-center"> Please add information about your field </h2>
+
+      <%= simple_form_for [current_user, @club, @field] do |f| %>
+        <%= f.input :field_number, label: "Please add the number of the field" %>
+        <%= f.input :price, label: "Please add the price/hour" %>
+        <%= f.input :outdoor,
+                    required: true,
+                    autofocus: true %>
+
+        <div class="form-actions text-center">
+          <%= f.button :submit, "Confirm", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ class ClubsController < ApplicationController
 
   def show
     @club = Club.find(params[:id])
+    @fields = Field.all
   end
 
   def new
