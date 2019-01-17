@@ -1,2 +1,6 @@
 <h1>Clubs#index</h1>
 <p>Find me in app/views/clubs/index.html.erb</p>
+
+<% @clubs.each do |club| %>
+  <%= link_to "#{club.name}", user_club_path(current_user, club), class: "btn btn-primary" %>
+<% end %>
