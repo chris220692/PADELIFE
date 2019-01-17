@@ -1,18 +1,44 @@
-<h1>Players#show</h1>
-<p>Find me in app/views/players/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h2 class="text-center"> Your player profile </h2>
 
-<% if @player.photo.present? %>
-  <%= cl_image_tag @player.photo, height: 300, width: 400, crop: :fill, gravity: :face %>
-<% end %>
+        <% if @player.photo.present? %>
+          <%= cl_image_tag @player.photo, height: 300, width: 400, crop: :fill, gravity: :face %>
+        <% end %>
 
-<%= @player.first_name %>
-<%= @player.last_name %>
-<%= @player.gender%>
-<%= @player.description %>
-<%= @player.age %>
-<%= @player.city %>
-<%= @player.zip %>
+        <ul>
+        <li><%= @player.first_name %></li>
+        <li><%= @player.last_name %></li>
+        <li><%= @player.gender%></li>
+        <li><%= @player.description %></li>
+        <li><%= @player.age %></li>
+        <li><%= @player.city %></li>
+        <li><%= @player.zip %></li>
 
 
-<%= link_to 'Edit your profile', edit_user_player_path(current_user, @player), class: "btn btn-primary" %>
-<%= link_to 'Destroy your profile', user_player_path(current_user, @player), method: :delete, class: "btn btn-danger" %>
+        <% if current_user == @player.user %>
+          <%= link_to 'Edit your profile', edit_user_player_path(current_user, @player), class: "btn btn-primary" %>
+          <%= link_to 'Destroy your profile', user_player_path(current_user, @player), method: :delete, class: "btn btn-danger" %>
+        <% end %>
+
+        <%= link_to 'Give your feedback', new_user_player_player_review_path(current_user, @player), class: "btn btn-success" %>
+
+        <h1>Reviews</h1>
+        <% @player.player_reviews.each do |review| %>
+        <p><%= review.user.name %> has commented : </p>
+          <li><%= review.rating %></li>
+          <li><%= review.comment %></li>
+          <% if current_user == review.user %>
+            <%= link_to 'Edit your review', edit_user_player_player_review_path(current_user, @player, review), class: "btn btn-primary" %>
+            <%= link_to 'Delete your review', edit_user_player_player_review_path(current_user, @player, review), class: "btn btn-danger" %>
+          <% end %>
+        <% end %>
+        </ul>
+
+
+
+
+    </div>
+  </div>
+</div>

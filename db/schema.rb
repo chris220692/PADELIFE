@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_01_08_163015) do
 
   # These are extensions that must be enabled in order to support this database
@@ -27,6 +28,17 @@ ActiveRecord::Schema.define(version: 2019_01_08_163015) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_clubs_on_user_id"
+  end
+
+  create_table "player_reviews", force: :cascade do |t|
+    t.text "comment"
+    t.integer "rating"
+    t.bigint "user_id"
+    t.bigint "player_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_player_reviews_on_player_id"
+    t.index ["user_id"], name: "index_player_reviews_on_user_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -86,6 +98,8 @@ ActiveRecord::Schema.define(version: 2019_01_08_163015) do
   end
 
   add_foreign_key "clubs", "users"
+  add_foreign_key "player_reviews", "players"
+  add_foreign_key "player_reviews", "users"
   add_foreign_key "players", "users"
   add_foreign_key "teacher_reviews", "teachers"
   add_foreign_key "teacher_reviews", "users"

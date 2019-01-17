@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h2 class="text-center"> Please edit your review </h2>
+
+      <%= simple_form_for [current_user, @player, @player_review] do |f| %>
+        <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>
+        <%= f.input :comment %>
+
+        <div class="form-actions text-center">
+          <%= f.submit "Confirm", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
