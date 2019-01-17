@@ -12,7 +12,9 @@ Rails.application.routes.draw do
       resources :teacher_reviews
     end
     resources :clubs do
-      resources :fields
+      resources :fields do
+        resources :reservations
+      end
     end
   end
 

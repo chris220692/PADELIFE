@@ -1,6 +1,6 @@
 class Club < ApplicationRecord
   belongs_to :user
-  has_many :fields
+  has_many :fields, dependent: :destroy
 
   validates :name, presence: true
   validates :street, presence: true

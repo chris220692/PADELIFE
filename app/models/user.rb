@@ -5,9 +5,11 @@ class User < ApplicationRecord
   has_one :club
   has_one :player
 
-  has_many :player_reviews
+  has_many :fields, through: :club
+  has_many :reservations
+  has_many :player_reviews, dependent: :destroy
+  has_many :teacher_reviews, dependent: :destroy
 
-  has_many :teacher_reviews
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 

@@ -1,0 +1,33 @@
+<h1>Reservations#new</h1>
+<p>Find me in app/views/reservations/new.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h2 class="text-center"> Please add information about your field </h2>
+
+      <%= simple_form_for [current_user, @club, @field, @reservation] do |f| %>
+        <p>When are you playing?
+          <%= datetime_local_field_tag :starting_hour,
+          params[:starting_hour],
+          class: "form-control",
+          placeholder: "To" %>
+        </p>
+        <p>Untill
+          <%= datetime_local_field_tag :ending_hour,
+          params[:ending_hour],
+          class: "form-control",
+          placeholder: "From" %>
+        </p>
+
+        <%= f.button :submit, "Confirm", class: "btn btn-primary" %>
+      <% end %>
+
+        <div class="form-actions text-center">
+
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
