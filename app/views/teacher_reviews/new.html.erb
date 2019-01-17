@@ -1,0 +1,9 @@
+<h1>TeacherReviews#new</h1>
+
+
+<%= simple_form_for [current_user, @teacher, @teacher_review] do |f|  %>
+  <%= f.error_notification %>
+  <%= f.input :rating, collectioon: [1, 2, 3, 4, 5] %>
+  <%= f.input :comment %>
+  <%= f.submit "Create Review", class: "btn btn-success"%>
+<% end %>

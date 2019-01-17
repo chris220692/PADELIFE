@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <h2> Your profile </h2>
+      <h2 class="text-center"> Your Teacher Profile </h2>
 
       <% if @teacher.photo.present? %>
         <%= cl_image_tag @teacher.photo, height: 300, width: 400, crop: :fill, gravity: :face %>
@@ -17,9 +17,27 @@
         <li><%= @teacher.zip %></li>
       </ul>
 
+      <% if current_user == @teacher.user %>
+        <%= link_to 'Edit your profile', edit_user_teacher_path(current_user, @teacher), class: "btn btn-primary" %>
+        <%= link_to 'Destroy your profile', user_teacher_path(current_user, @teacher), method: :delete, class: "btn btn-danger" %>
+      <% end %>
 
-      <%= link_to 'Edit your profile', edit_user_teacher_path(current_user, @teacher), class: "btn btn-primary" %>
-      <%= link_to 'Destroy your profile', user_teacher_path(current_user, @teacher), method: :delete, class: "btn btn-danger" %>
+      <%= link_to 'Give your feedback', new_user_teacher_teacher_review_path(current_user, @teacher), class: "btn btn-success" %>
+
+      <ul>
+        <h3>Reviews </h3>
+        <% @teacher.teacher_reviews.each do |review| %>
+          <p><%= review.user.name %> has commented :</p>
+          <li><%= review.rating %></li>
+          <li><%= review.comment %></li>
+          <% if current_user == review.user %>
+            <%= link_to 'Edit your comment', edit_user_teacher_teacher_review_path(current_user, @teacher, review), class: "btn btn-primary" %>
+            <%= link_to 'Destroy your comment', user_teacher_teacher_review_path(current_user, @teacher, review), method: :delete, class: "btn btn-danger"%>
+          <% end %>
+        <% end %>
+      </ul>
+
+
     </div>
   </div>
 </div>
