@@ -16,10 +16,11 @@
         <li><%= @club.description %></li>
       </ul>
 
-
-      <%= link_to 'Edit your club', edit_user_club_path(current_user, @club), class: "btn btn-primary" %>
-      <%= link_to 'Destroy your club', user_club_path(current_user, @club), method: :delete, class: "btn btn-danger" %>
-      <%= link_to 'Add a field', new_user_club_field_path(current_user, @club), class: "btn btn-success" %>
+      <% if current_user == @club.user %>
+        <%= link_to 'Edit your club', edit_user_club_path(current_user, @club), class: "btn btn-primary" %>
+        <%= link_to 'Destroy your club', user_club_path(current_user, @club), method: :delete, class: "btn btn-danger" %>
+        <%= link_to 'Add a field', new_user_club_field_path(current_user, @club), class: "btn btn-success" %>
+      <% end %>
 
     </div>
   </div>
@@ -34,8 +35,10 @@
         <% else %>
           <p>Indoor</p>
         <% end %>
-        <%= link_to "Edit field", edit_user_club_field_path(current_user, @club, field), class: "btn btn-primary" %>
-        <%= link_to "Remove field", user_club_field_path(current_user, @club, field), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+        <% if current_user == @club.user %>
+          <%= link_to "Edit field", edit_user_club_field_path(current_user, @club, field), class: "btn btn-primary" %>
+          <%= link_to "Remove field", user_club_field_path(current_user, @club, field), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+        <% end %>
       </div>
     <% end %>
   </div>
