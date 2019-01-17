@@ -1,5 +1,6 @@
 class Club < ApplicationRecord
   belongs_to :user
+  has_many :fields
 
   validates :name, presence: true
   validates :street, presence: true

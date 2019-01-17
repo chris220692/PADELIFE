@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_08_163015) do
+ActiveRecord::Schema.define(version: 2019_01_17_100514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 2019_01_08_163015) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_clubs_on_user_id"
+  end
+
+  create_table "fields", force: :cascade do |t|
+    t.boolean "outdoor", default: true
+    t.integer "price"
+    t.string "status", default: "Free"
+    t.integer "field_number"
+    t.bigint "club_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_fields_on_club_id"
   end
 
   create_table "player_reviews", force: :cascade do |t|
@@ -97,6 +108,7 @@ ActiveRecord::Schema.define(version: 2019_01_08_163015) do
   end
 
   add_foreign_key "clubs", "users"
+  add_foreign_key "fields", "clubs"
   add_foreign_key "player_reviews", "players"
   add_foreign_key "player_reviews", "users"
   add_foreign_key "players", "users"
