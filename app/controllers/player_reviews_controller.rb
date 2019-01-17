@@ -43,6 +43,11 @@ class PlayerReviewsController < ApplicationController
   end
 
   def destroy
+    @player_review = PlayerReview.find(params[:id])
+    @player = Player.find(params[:player_id])
+    if @player_review.destroy
+      redirect_to user_player_path(current_user, @player)
+    end
   end
 
   private
