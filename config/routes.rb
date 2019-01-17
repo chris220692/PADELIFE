@@ -16,4 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :clubs, only: [:index]
+  resources :players, only: [:index]
+  resources :teachers, only: [:index]
 end
